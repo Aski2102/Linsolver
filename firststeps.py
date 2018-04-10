@@ -35,11 +35,15 @@ for ii in range (0,nn):         #great for-loop
 
     print(cc)
 
-
     #eliminate rest of the i-column
-    for jj in range (ii+1,nn):
-        cc[jj,:]=cc[jj,:]-cc[ii,:]*cc[jj,ii]
- 
-    print(cc)   
+    for jj in range (0,nn):
+        if jj==ii:
+            continue
+        else:
+            cc[jj,:]=cc[jj,:]-cc[ii,:]*cc[jj,ii]   
 
 print(cc)
+
+xx=cc[:,nn]
+print('The solution of the LES is:')
+print(xx)
