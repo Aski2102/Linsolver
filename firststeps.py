@@ -14,20 +14,32 @@ print(cc)
 
 
 ii=0 #iterating index
-#for ii<nn          #great for-loop
+for ii in range (0,nn):         #great for-loop
 
-if cc[ii,ii]==0: #if diagonalelement is zero switch the row with the next row that isn't zero
-        jj = ii+1 
-        while cc[jj,ii] is None:
-            if jj<=nn-1:
-                jj=jj+1
+    if cc[ii,ii]==0: #if diagonalelement is zero switch the row with the next row that isn't zero
+            jj = ii+1 
+            while cc[jj,ii] is None:
+                if jj<=nn-1:
+                    jj=jj+1
+                else:
+                    print('The LEQ is not solvable') #if there is none, the LEQ isn't solvable
             else:
-                print('The LEQ is not solvable') #if there is none, the LEQ isn't solvable
-        else:
-            cc[[ii,jj],:]=cc[[jj,ii],:]
+                 cc[[ii,jj],:]=cc[[jj,ii],:]
 
-else:
+    else:
+        print(cc)
+
     print(cc)
 
-print(cc)
+    cc[ii,:]=cc[ii,:]/cc[ii,ii] #make diagonalelement 1
 
+    print(cc)
+
+
+    #eliminate rest of the i-column
+    for jj in range (ii+1,nn):
+        cc[jj,:]=cc[jj,:]-cc[ii,:]*cc[jj,ii]
+ 
+    print(cc)   
+
+print(cc)
