@@ -1,3 +1,6 @@
 .spyderproject
 __pycache__
 .spyderproject__pycache__
+.cache/
+.pylintrc
+firststeps
