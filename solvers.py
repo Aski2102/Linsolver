@@ -21,7 +21,7 @@ def gaussian_eliminate(aa, bb):
 
     cc = np.hstack([aa, bb]) #merge the matrices
 
-    print(cc)
+    #print(cc)
 
 
 
@@ -29,23 +29,27 @@ def gaussian_eliminate(aa, bb):
     for ii in range(0, nn):         #great for-loop
 
         if cc[ii, ii] == 0: #if diagonalelement is zero switch the row with the next row that isn't zero
-            jj = ii+1
-            while cc[jj, ii] is None:
-                if jj <= nn-1:
-                    jj = jj+1
+            if ii < nn-1:
+                jj = ii+1
+                while cc[jj, ii] is None:
+                    if jj <= nn-1:
+                        jj = jj+1
+                    else:
+                    #print('The LEQ is not solvable') #if there is none, the LEQ isn't solvable
+                        return None
                 else:
-                    print('The LEQ is not solvable') #if there is none, the LEQ isn't solvable
+                    cc[[ii, jj], :] = cc[[jj, ii], :]
             else:
-                 cc[[ii, jj], :] = cc[[jj, ii], :]
-
+                return None
         else:
-            print(cc)
+            #print(cc)
+            pass
 
-        print(cc)
+        #print(cc)
 
         cc[ii, :] = cc[ii, :] / cc[ii, ii] #make diagonalelement 1
 
-        print(cc)
+        #print(cc)
 
 
         #eliminate rest of the i-column
@@ -55,15 +59,16 @@ def gaussian_eliminate(aa, bb):
             else:
                 cc[jj, :] = cc[jj, :] - cc[ii, :] * cc[jj, ii]
 
-    print(cc)
+     #print(cc)
 
     xx = cc[:, nn]
-    print('The solution of the LES is:')
-    print(xx)
+    #print('The solution of the LES is:')
+    #print(xx)
 
     return xx
 
-aa = np.array([[2.0, 4.0, 4.0], [5.0, 4.0, 2.0], [1.0, 2.0, -1.0]])
-bb = np.array([1.0, 4.0, 2.0])
+aa = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+bb = np.array([1.0, 2.0, 3.0])
 
 xx = gaussian_eliminate(aa, bb)
+print(xx)
