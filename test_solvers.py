@@ -4,7 +4,7 @@
 import numpy as np
 import solvers
 
-def main():
+def test_main():
     """Main testing function."""
 
     print("\nTest 1")
@@ -36,6 +36,6 @@ def _check_result(expected, obtained):
 
 
 if __name__ == '__main__':
-    main()
+    test_main()
 
 
